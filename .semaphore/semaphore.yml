@@ -24,7 +24,7 @@ blocks:
   - name: Compile C code
     task:
       jobs:
-      - name: Smoke
+      - name: Hello World!
         commands:
           - checkout
           - gcc hw.c -o hw
