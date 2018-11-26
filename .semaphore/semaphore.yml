@@ -6,25 +6,27 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: "Build"
+  - name: Inspect environment
     task:
       env_vars:
         - name: APP_ENV
           value: prod
       jobs:
-      - name: Docker build
+      - name: gcc version
         commands:
           - checkout
+          - gcc --version
           - ls -1
           - echo $APP_ENV
           - echo "Docker build..."
           - echo "done"
 
-  - name: "Smoke tests"
+  - name: Compile C code
     task:
       jobs:
       - name: Smoke
         commands:
           - checkout
-          - echo "make smoke"
+          - gcc hw.c -o hw
+          - ./hw
 
