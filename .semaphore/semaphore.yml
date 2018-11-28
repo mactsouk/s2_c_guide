@@ -29,7 +29,8 @@ blocks:
           - checkout
           - gcc hw.c -o hw_4
           - ./hw_4
-          - sudo update-alternatives --set gcc "/usr/bin/gcc-6"
-          - gcc hw.c -o hw_6
+          - sudo update-alternatives --set gcc "/usr/bin/gcc-8"
+          - gcc hw.c -o hw_8
           - ./hw_6
+          - ls -l hw_4 hw_8
 
