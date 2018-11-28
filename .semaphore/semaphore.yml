@@ -6,20 +6,20 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: Inspect environment
+  - name: Change GCC version
     task:
-      env_vars:
-        - name: APP_ENV
-          value: prod
       jobs:
-      - name: gcc version
+      - name: Select gcc version 6
         commands:
-          - checkout
           - gcc --version
-          - ls -1
-          - echo $APP_ENV
-          - echo "Docker build..."
-          - echo "done"
+          - sudo update-alternatives --set gcc "/usr/bin/gcc-6"
+          - gcc --version
+
+      - name: Select gcc version 8
+        commands:
+          - gcc --version
+          - sudo update-alternatives --set gcc "/usr/bin/gcc-6"
+          - gcc --version
 
   - name: Compile C code
     task:
@@ -27,6 +27,9 @@ blocks:
       - name: Hello World!
         commands:
           - checkout
-          - gcc hw.c -o hw
-          - ./hw
+          - gcc hw.c -o hw_4
+          - ./hw_4
+          - sudo update-alternatives --set gcc "/usr/bin/gcc-6"
+          - gcc hw.c -o hw_6
+          - ./hw_6
 
