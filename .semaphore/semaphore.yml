@@ -31,6 +31,6 @@ blocks:
           - ./hw_4
           - sudo update-alternatives --set gcc "/usr/bin/gcc-8"
           - gcc hw.c -o hw_8
-          - ./hw_6
+          - ./hw_8
           - ls -l hw_4 hw_8
 
