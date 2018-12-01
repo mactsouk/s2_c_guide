@@ -12,13 +12,13 @@ blocks:
       - name: Select gcc version 6
         commands:
           - gcc --version
-          - sudo update-alternatives --set gcc "/usr/bin/gcc-6"
+          - sem-version c 6
           - gcc --version
 
       - name: Select gcc version 8
         commands:
           - gcc --version
-          - sudo update-alternatives --set gcc "/usr/bin/gcc-8"
+          - sem-version c 8
           - gcc --version
 
   - name: Compile C code
@@ -29,7 +29,7 @@ blocks:
           - checkout
           - gcc hw.c -o hw_4
           - ./hw_4
-          - sudo update-alternatives --set gcc "/usr/bin/gcc-8"
+          - sem-version c 8
           - gcc hw.c -o hw_8
           - ./hw_8
           - ls -l hw_4 hw_8
